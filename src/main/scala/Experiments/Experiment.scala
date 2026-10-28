@@ -17,6 +17,13 @@ import java.io.FileWriter
 object Experiment extends App {
 
   println(s"Experiment: args.length =  ${args.length}")
+  // Opt-in reproduction settings; upstream defaults are preserved.
+  val paperProfile = scala.sys.env.get("DPROVDB_PROFILE").contains("paper")
+  val outputDir = scala.sys.env.getOrElse("DPROVDB_OUTPUT_DIR", "data")
+  val configuredRuns = scala.sys.env.get("DPROVDB_RUNS").map(_.toInt).getOrElse(4)
+  require(configuredRuns > 0)
+  new java.io.File(outputDir).mkdirs()
+  println(s"profile=$paperProfile output=$outputDir runs=$configuredRuns")
 
 
   if (args.length == 1) {
@@ -61,7 +68,7 @@ object Experiment extends App {
   println(s"Selected experiments: End-to-end $e2e_exp, Additive GM vs Vanilla $component_exp_1, " +
     s"Cached Synopses $component_exp_2, Constraint Settings $component_exp_3, Delta Experiment $delta_exp, Other $other_exp")
 
-  val runs: Int = 4 // each experiment is run 4 times
+  val runs: Int = configuredRuns // default: four independent workload seeds
   private val randomnessSeed = 42
   private val replacement = false
 
@@ -79,7 +86,7 @@ object Experiment extends App {
      * End-to-end Experiments
      */
     if (e2e_exp) {
-      filename = "data/" + task + "_" + db + "_end_to_end.csv"
+      filename = outputDir + "/" + task + "_" + db + "_end_to_end.csv"
       writeReportTittle(filename)
 
       val state: State = new State()
@@ -94,7 +101,7 @@ object Experiment extends App {
         ProvenanceState("static", "fixed-normalized"), ProvenanceState("static", "fixed-normalized"), 
         ProvenanceState("static", "fixed-normalized"))
       val accuracyState = AccuracyState("increasing", 3000, increasingStep = 1)
-      val analystCase = List(1, 9)
+      val analystCase = if (paperProfile) List(1, 4) else List(1, 9)
 
       val overallBudgets = List(0.4, 0.8, 1.6, 3.2, 6.4)
 
@@ -103,7 +110,7 @@ object Experiment extends App {
           budget =>
             schedulers foreach {
               scheduler =>
-                mechanisms zip provenanceStates foreach {
+                mechanisms.zip(provenanceStates).filterNot { case (m, _) => paperProfile && m == "Brownian" } foreach {
                   tuple =>
                       setupState(state, db, table, randomnessSeed, curRun, budget, analystCase, task,
                         workloadSize, accuracyState, tuple._2, scheduler, replacement, tuple._1, null, filename)
@@ -120,7 +127,7 @@ object Experiment extends App {
      */
 
     if (component_exp_1) {
-      filename = "data/" + task + "_" + db + "_analyst_constraints.csv"
+      filename = outputDir + "/" + task + "_" + db + "_analyst_constraints.csv"
       writeReportTittle(filename)
 
       val mechanisms = List("aGM", "aGM", "baseline")
@@ -170,7 +177,7 @@ object Experiment extends App {
      * Component Experiment 2: Cached Synopses
      */
     if (component_exp_2) {
-      filename = "data/" + task + "_" + db + "_increasing_workload.csv"
+      filename = outputDir + "/" + task + "_" + db + "_increasing_workload.csv"
       writeReportTittle(filename)
 
       val privileges = List(1, 4) // two data analysts: low high
@@ -213,7 +220,7 @@ object Experiment extends App {
      * Component Experiment 3: fairness vs utility
      */
     if (component_exp_3) {
-      filename = "data/" + task + "_" + db + "_fairness.csv"
+      filename = outputDir + "/" + task + "_" + db + "_fairness.csv"
       writeReportTittle(filename)
 
       val provenanceStates = List(ProvenanceState("dynamic", "fixed-aGM"),
@@ -221,7 +228,7 @@ object Experiment extends App {
         ProvenanceState("dynamic", "fixed-expansion", 1.9))
 
       val schedulers = List("round-robin", "random")
-      val mechanisms = List("aGM", "aGM", "aGM", "aGM")
+      val mechanisms = if (paperProfile) List("aGM") else List("aGM", "aGM", "aGM", "aGM")
       val accuracyState = AccuracyState("increasing", 15000, increasingStep = 2)
 
 
@@ -255,7 +262,7 @@ object Experiment extends App {
      * Other Evaluation: Comparisons between different composition methods
      */
     if (other_exp) {
-      filename = "data/" + task + "_" + db + "_compositions.csv"
+      filename = outputDir + "/" + task + "_" + db + "_compositions.csv"
       writeReportTittle(filename)
 
 
@@ -286,7 +293,7 @@ object Experiment extends App {
      * Delta Experiment: Comparisons between different delta values
      */
     if (delta_exp) {
-      filename = "data/" + task + "_" + db + "_end_to_end_delta.csv"
+      filename = outputDir + "/" + task + "_" + db + "_end_to_end_delta.csv"
       writeReportTittle(filename)
 
       val state: State = new State()
@@ -299,11 +306,11 @@ object Experiment extends App {
       val provenanceStates = List(ProvenanceState("dynamic", "fixed-aGM"), ProvenanceState("dynamic", "fixed-normalized"),
         ProvenanceState("static", "fixed-normalized"), ProvenanceState("static", "fixed-normalized"), ProvenanceState("static", "fixed-normalized"))
       val accuracyState = AccuracyState("increasing", 3000, increasingStep = 1)
-      val analystCase = List(1, 9)
+      val analystCase = if (paperProfile) List(1, 4) else List(1, 9)
 
       val overallBudgets = List(6.4)
 //      val overallBudgets = List(0.4, 0.8, 1.6, 3.2, 6.4)
-      val perQueryDeltas = List(1e-9, 1e-10, 1e-11, 1e-11, 1e-12, 1e-13)
+      val perQueryDeltas = if (paperProfile) List(1e-9, 1e-10, 1e-11, 1e-12, 1e-13) else List(1e-9, 1e-10, 1e-11, 1e-11, 1e-12, 1e-13)
 
       for (curRun <- 1 to runs) {
         overallBudgets foreach {
@@ -312,7 +319,7 @@ object Experiment extends App {
               delta =>
               schedulers foreach {
                 scheduler =>
-                mechanisms zip provenanceStates foreach {
+                mechanisms.zip(provenanceStates).filterNot { case (m, _) => paperProfile && m == "Brownian" } foreach {
                   tuple =>
                       setupState(state, db, table, randomnessSeed, curRun, budget, analystCase, task,
                         workloadSize, accuracyState, tuple._2, scheduler, replacement, tuple._1, null, filename, perQueryDelta=delta)
@@ -335,11 +342,11 @@ object Experiment extends App {
     /**
      * End-to-end Evaluation for BFS tasks.
      */
-    filename = "data/" + task + "_" + db + "_end_to_end.csv"
+    filename = outputDir + "/" + task + "_" + db + "_end_to_end.csv"
     writeReportTittle(filename)
 
     val privileges = List(1, 4) // two data analysts: low high
-    val runs: Int = 4 // each experiment is run 4 times
+    val runs: Int = configuredRuns // default: four independent workload seeds
 
     val accuracyState = AccuracyState("increasing", 25000, increasingStep = 100)
     val provenanceStates = List(ProvenanceState("dynamic", "fixed-aGM"), 
@@ -363,7 +370,7 @@ object Experiment extends App {
       eqw_param =>
       schedulers foreach {
         scheduler =>
-          mechanisms zip provenanceStates foreach {
+          mechanisms.zip(provenanceStates).filterNot { case (m, _) => paperProfile && m == "Brownian" } foreach {
             tuple =>
                 setupState(state, db, table, randomnessSeed, curRun, overallBudget, privileges, task, null.asInstanceOf[Int],
                   accuracyState, tuple._2, scheduler, replacement, tuple._1, eqw_param, filename)
@@ -435,7 +442,7 @@ object Experiment extends App {
       state.setupAnalystWorkload(workloadType, workloadSize, accuracyState)
     state.setMechanism(mechanism, accountant)
     state.setScheduler(scheduler, replacement)
-    state.setLogger("debug")
+    state.setLogger(scala.sys.env.getOrElse("DPROVDB_LOG_LEVEL", "debug"))
 
     state
   }

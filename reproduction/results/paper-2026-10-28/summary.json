@@ -1,0 +1,34 @@
+{
+  "datasets": {
+    "adult": {
+      "e2e_agm_at_least_vanilla": 7,
+      "e2e_settings": 10,
+      "six_analysts_agm": 6490.5,
+      "six_analysts_vanilla": 2719.5,
+      "six_analysts_ratio": 2.3866519580805297,
+      "epsilon_6_4_round_robin": {
+        "Chorus": 9.75,
+        "ChorusP": 10.0,
+        "DProvDB": 3208.5,
+        "Vanilla": 3274.75,
+        "sPrivateSQL": 28.0
+      }
+    },
+    "tpch": {
+      "e2e_agm_at_least_vanilla": 7,
+      "e2e_settings": 10,
+      "six_analysts_agm": 9553.5,
+      "six_analysts_vanilla": 4947.0,
+      "six_analysts_ratio": 1.9311704063068527,
+      "epsilon_6_4_round_robin": {
+        "Chorus": 9.5,
+        "ChorusP": 9.75,
+        "DProvDB": 4555.5,
+        "Vanilla": 4411.25,
+        "sPrivateSQL": 4985.5
+      }
+    }
+  },
+  "rows": 2152,
+  "issues": []
+}

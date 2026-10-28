@@ -5,6 +5,14 @@
 
 # DProvDB
 
+## 本次论文复现（中文）
+
+- [中文实验报告](reproduction/REPORT.md) · [PDF 报告](output/pdf/DProvDB-reproduction-report.pdf)
+- [环境与运行方法](reproduction/README.md) · [论文与源码差异核对](reproduction/source-audit.md)
+- [实际结果、图表及原始日志](reproduction/results/paper-2026-10-28/)
+
+本 fork 保留作者实现，并提供可选的论文参数配置。报告如实区分本次实测结果、原文结论和未能严格对齐的部分。
+
   
 
 <p  align="center">

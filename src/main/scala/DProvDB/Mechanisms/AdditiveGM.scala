@@ -54,7 +54,7 @@ class AdditiveGM (state: State, provTable: ProvenanceTable, analysts: List[Analy
     val sigma = AnalyticGM.calibrateAnalyticGaussianMechanism(epsilon, delta, histogramSensitivity)
 
     val newHistogram = view._flatTable map {
-      cell => cell + Gaussian(0, sigma)(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister()))).draw()
+      cell => cell + Gaussian(0, sigma)(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister())).draw()
     }
 
     if (globalSynopsis._epsilon == Double.PositiveInfinity) { // first time asking this query
@@ -118,7 +118,7 @@ class AdditiveGM (state: State, provTable: ProvenanceTable, analysts: List[Analy
     val targetSigma: Double = AnalyticGM.calibrateAnalyticGaussianMechanism(targetEpsilon, delta, querySens)
 
     noisyAnswer map {
-      cell => cell + Gaussian(0, math.sqrt(math.pow(targetSigma, 2) - math.pow(previousSigma, 2)))(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister()))).draw()
+      cell => cell + Gaussian(0, math.sqrt(math.pow(targetSigma, 2) - math.pow(previousSigma, 2)))(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister())).draw()
     }
 
   }

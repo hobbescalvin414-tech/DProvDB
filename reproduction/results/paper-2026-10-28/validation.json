@@ -1,0 +1,96 @@
+{
+  "files": [
+    {
+      "file": "EQW_adult_end_to_end.csv",
+      "rows": 16,
+      "expected_rows": 16,
+      "sha256": "38c71c40557790f678d488d7f3e2b84626a281fa71085457546de0404617e161",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_adult_end_to_end.csv",
+      "rows": 200,
+      "expected_rows": 200,
+      "sha256": "33601cb695937a2e50588b4c8e32c3645418575842b933845e08ab7ad7f1ae3f",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_adult_analyst_constraints.csv",
+      "rows": 108,
+      "expected_rows": 108,
+      "sha256": "254f84f98d97ec22fca56a89776e34f6f798f9368bbffd8af8c16b589848b2a2",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_adult_increasing_workload.csv",
+      "rows": 480,
+      "expected_rows": 480,
+      "sha256": "cfd09d56b9056e7a3d3b1a4ce684be15ee1607614db3bbbf1cbd5d630c20b867",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_adult_fairness.csv",
+      "rows": 160,
+      "expected_rows": 160,
+      "sha256": "c9452e677950177124dc1067e05b61ce8a2b1d06035cd1c77ff24500fae48946",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_adult_compositions.csv",
+      "rows": 12,
+      "expected_rows": 12,
+      "sha256": "088bb496da431e32bab0a330f653b708e1c5412d069d31841427dc30c1492abf",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "EQW_tpch_end_to_end.csv",
+      "rows": 16,
+      "expected_rows": 16,
+      "sha256": "c0e22fab40e86fab1dfac4424962f0bae533e627430f3181f807c1656c8dbb72",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_tpch_end_to_end.csv",
+      "rows": 200,
+      "expected_rows": 200,
+      "sha256": "b0ccd112995f87d1449417328da15fd5e61f7e81430cf9f341523439149b7eb8",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_tpch_analyst_constraints.csv",
+      "rows": 108,
+      "expected_rows": 108,
+      "sha256": "321b482e4811214697a7f9f190ce3c21743573b4f2ce4bd5caeecb60bf57865c",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_tpch_increasing_workload.csv",
+      "rows": 480,
+      "expected_rows": 480,
+      "sha256": "5310becbaf5064ef6a40081a3e04d1e7cfb89c5e08e5e5e58b6f0289f301d6c8",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_tpch_fairness.csv",
+      "rows": 160,
+      "expected_rows": 160,
+      "sha256": "c8e6792a4cbc0b4de7b3729b9ca6cd515a10fc07bb3ca8eb4813073ce7f204f6",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_tpch_compositions.csv",
+      "rows": 12,
+      "expected_rows": 12,
+      "sha256": "523b1d77859a34a8a389a1f884cdd9db3bb08ce0c0a8016d51198d6dfb03d3dd",
+      "epsilon_exceeded_rows": 0
+    },
+    {
+      "file": "RRQ_adult_end_to_end_delta.csv",
+      "rows": 200,
+      "expected_rows": 200,
+      "sha256": "a1c57696110b895bd97a75dfd55b76a4cd49d50cb9545b362d663b7ae5c73b4c",
+      "epsilon_exceeded_rows": 0
+    }
+  ],
+  "issues": []
+}

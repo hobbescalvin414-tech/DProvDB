@@ -1,0 +1,45 @@
+{
+  "upstream_commit": "c7a4cba240f89a8fb696e40557fe1c44fb4785b4",
+  "chorus_commit": "35b9c06a9d0bf00d0b1eef1231f0b5ea0b237f1c",
+  "tpch_kit_commit": "852ad0a5ee31ebefeed884cea4188781dd9613a3",
+  "workload_seeds": [
+    1025,
+    2050,
+    3075,
+    4100
+  ],
+  "runs_per_setting": 4,
+  "profile": "paper",
+  "noise_rng_fully_seeded": false,
+  "datasets": {
+    "adult": 45222,
+    "tpch_orders": 1500000,
+    "tpch_lineitem": 6001215
+  },
+  "runtime_limits": {
+    "application_cpus": 2,
+    "application_memory_gib": 4,
+    "postgres_cpus": 1,
+    "postgres_memory_gib": 1
+  },
+  "source_changes": "Opt-in harness configuration plus direct single-threaded MersenneTwister RandBasis; default ThreadLocal behavior retained",
+  "privacy_delta_constraint": 1e-05,
+  "image": "sha256:e284d2b862614fc7d56322d4a4c87e2a78d295dccda276f0ea7d8e4f9b59e5d6",
+  "status": "completed",
+  "diagnostic_attempt_excluded": true,
+  "started_utc": "2026-10-28T05:47:29Z",
+  "finished_utc": "2026-10-28T07:32:48Z",
+  "parallel_batches": [
+    "tpch RRQ FFFTFF",
+    "tpch RRQ FFFFTF",
+    "adult RRQ FFFFFT"
+  ],
+  "external_java_heap_mib": 1500,
+  "validation": {
+    "rows": 2152,
+    "files": 13,
+    "issues": [],
+    "pdf_pages": 13,
+    "pdf_visual_review": "All pages rendered; contact sheets and detailed pages checked"
+  }
+}

@@ -114,7 +114,7 @@ class ViewManager {
 
     view.histogramView map {
       case (key, e) =>
-        (key, e + Gaussian(0, sigma)(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister()))).draw())
+        (key, e + Gaussian(0, sigma)(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister())).draw())
     }
   }
 

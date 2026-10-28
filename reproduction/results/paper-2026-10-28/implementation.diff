@@ -1,0 +1,231 @@
+diff --git a/src/main/scala/DProvDB/Mechanisms/AdditiveGM.scala b/src/main/scala/DProvDB/Mechanisms/AdditiveGM.scala
+index d018af2..ff974b0 100644
+--- a/src/main/scala/DProvDB/Mechanisms/AdditiveGM.scala
++++ b/src/main/scala/DProvDB/Mechanisms/AdditiveGM.scala
+@@ -54,7 +54,7 @@ class AdditiveGM (state: State, provTable: ProvenanceTable, analysts: List[Analy
+     val sigma = AnalyticGM.calibrateAnalyticGaussianMechanism(epsilon, delta, histogramSensitivity)
+ 
+     val newHistogram = view._flatTable map {
+-      cell => cell + Gaussian(0, sigma)(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister()))).draw()
++      cell => cell + Gaussian(0, sigma)(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister())).draw()
+     }
+ 
+     if (globalSynopsis._epsilon == Double.PositiveInfinity) { // first time asking this query
+@@ -118,7 +118,7 @@ class AdditiveGM (state: State, provTable: ProvenanceTable, analysts: List[Analy
+     val targetSigma: Double = AnalyticGM.calibrateAnalyticGaussianMechanism(targetEpsilon, delta, querySens)
+ 
+     noisyAnswer map {
+-      cell => cell + Gaussian(0, math.sqrt(math.pow(targetSigma, 2) - math.pow(previousSigma, 2)))(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister()))).draw()
++      cell => cell + Gaussian(0, math.sqrt(math.pow(targetSigma, 2) - math.pow(previousSigma, 2)))(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister())).draw()
+     }
+ 
+   }
+diff --git a/src/main/scala/DProvDB/Utils/WorkloadUtils.scala b/src/main/scala/DProvDB/Utils/WorkloadUtils.scala
+index 58a5c09..f2d8444 100644
+--- a/src/main/scala/DProvDB/Utils/WorkloadUtils.scala
++++ b/src/main/scala/DProvDB/Utils/WorkloadUtils.scala
+@@ -235,7 +235,7 @@ object WorkloadUtils {
+   }
+ 
+   private def GuassianDraw(mean: Int, variance: Int, seed: Long = 42): Double = {
+-    Gaussian(mean, variance)(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister(seed)))).draw()
++    Gaussian(mean, variance)(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister(seed))).draw()
+   }
+ 
+   private def processAccuracy(accuracyState: AccuracyState, count: Int, randomSeed: Long): Double = {
+diff --git a/src/main/scala/DProvDB/ViewManager/ViewManager.scala b/src/main/scala/DProvDB/ViewManager/ViewManager.scala
+index a95ee9f..ca9353b 100644
+--- a/src/main/scala/DProvDB/ViewManager/ViewManager.scala
++++ b/src/main/scala/DProvDB/ViewManager/ViewManager.scala
+@@ -114,7 +114,7 @@ class ViewManager {
+ 
+     view.histogramView map {
+       case (key, e) =>
+-        (key, e + Gaussian(0, sigma)(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister()))).draw())
++        (key, e + Gaussian(0, sigma)(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister())).draw())
+     }
+   }
+ 
+diff --git a/src/main/scala/Experiments/Experiment.scala b/src/main/scala/Experiments/Experiment.scala
+index f3f4c55..3c23f5d 100644
+--- a/src/main/scala/Experiments/Experiment.scala
++++ b/src/main/scala/Experiments/Experiment.scala
+@@ -17,6 +17,13 @@ import java.io.FileWriter
+ object Experiment extends App {
+ 
+   println(s"Experiment: args.length =  ${args.length}")
++  // Opt-in reproduction settings; upstream defaults are preserved.
++  val paperProfile = scala.sys.env.get("DPROVDB_PROFILE").contains("paper")
++  val outputDir = scala.sys.env.getOrElse("DPROVDB_OUTPUT_DIR", "data")
++  val configuredRuns = scala.sys.env.get("DPROVDB_RUNS").map(_.toInt).getOrElse(4)
++  require(configuredRuns > 0)
++  new java.io.File(outputDir).mkdirs()
++  println(s"profile=$paperProfile output=$outputDir runs=$configuredRuns")
+ 
+ 
+   if (args.length == 1) {
+@@ -61,7 +68,7 @@ object Experiment extends App {
+   println(s"Selected experiments: End-to-end $e2e_exp, Additive GM vs Vanilla $component_exp_1, " +
+     s"Cached Synopses $component_exp_2, Constraint Settings $component_exp_3, Delta Experiment $delta_exp, Other $other_exp")
+ 
+-  val runs: Int = 4 // each experiment is run 4 times
++  val runs: Int = configuredRuns // default: four independent workload seeds
+   private val randomnessSeed = 42
+   private val replacement = false
+ 
+@@ -79,7 +86,7 @@ object Experiment extends App {
+      * End-to-end Experiments
+      */
+     if (e2e_exp) {
+-      filename = "data/" + task + "_" + db + "_end_to_end.csv"
++      filename = outputDir + "/" + task + "_" + db + "_end_to_end.csv"
+       writeReportTittle(filename)
+ 
+       val state: State = new State()
+@@ -94,7 +101,7 @@ object Experiment extends App {
+         ProvenanceState("static", "fixed-normalized"), ProvenanceState("static", "fixed-normalized"), 
+         ProvenanceState("static", "fixed-normalized"))
+       val accuracyState = AccuracyState("increasing", 3000, increasingStep = 1)
+-      val analystCase = List(1, 9)
++      val analystCase = if (paperProfile) List(1, 4) else List(1, 9)
+ 
+       val overallBudgets = List(0.4, 0.8, 1.6, 3.2, 6.4)
+ 
+@@ -103,7 +110,7 @@ object Experiment extends App {
+           budget =>
+             schedulers foreach {
+               scheduler =>
+-                mechanisms zip provenanceStates foreach {
++                mechanisms.zip(provenanceStates).filterNot { case (m, _) => paperProfile && m == "Brownian" } foreach {
+                   tuple =>
+                       setupState(state, db, table, randomnessSeed, curRun, budget, analystCase, task,
+                         workloadSize, accuracyState, tuple._2, scheduler, replacement, tuple._1, null, filename)
+@@ -120,7 +127,7 @@ object Experiment extends App {
+      */
+ 
+     if (component_exp_1) {
+-      filename = "data/" + task + "_" + db + "_analyst_constraints.csv"
++      filename = outputDir + "/" + task + "_" + db + "_analyst_constraints.csv"
+       writeReportTittle(filename)
+ 
+       val mechanisms = List("aGM", "aGM", "baseline")
+@@ -170,7 +177,7 @@ object Experiment extends App {
+      * Component Experiment 2: Cached Synopses
+      */
+     if (component_exp_2) {
+-      filename = "data/" + task + "_" + db + "_increasing_workload.csv"
++      filename = outputDir + "/" + task + "_" + db + "_increasing_workload.csv"
+       writeReportTittle(filename)
+ 
+       val privileges = List(1, 4) // two data analysts: low high
+@@ -213,7 +220,7 @@ object Experiment extends App {
+      * Component Experiment 3: fairness vs utility
+      */
+     if (component_exp_3) {
+-      filename = "data/" + task + "_" + db + "_fairness.csv"
++      filename = outputDir + "/" + task + "_" + db + "_fairness.csv"
+       writeReportTittle(filename)
+ 
+       val provenanceStates = List(ProvenanceState("dynamic", "fixed-aGM"),
+@@ -221,7 +228,7 @@ object Experiment extends App {
+         ProvenanceState("dynamic", "fixed-expansion", 1.9))
+ 
+       val schedulers = List("round-robin", "random")
+-      val mechanisms = List("aGM", "aGM", "aGM", "aGM")
++      val mechanisms = if (paperProfile) List("aGM") else List("aGM", "aGM", "aGM", "aGM")
+       val accuracyState = AccuracyState("increasing", 15000, increasingStep = 2)
+ 
+ 
+@@ -255,7 +262,7 @@ object Experiment extends App {
+      * Other Evaluation: Comparisons between different composition methods
+      */
+     if (other_exp) {
+-      filename = "data/" + task + "_" + db + "_compositions.csv"
++      filename = outputDir + "/" + task + "_" + db + "_compositions.csv"
+       writeReportTittle(filename)
+ 
+ 
+@@ -286,7 +293,7 @@ object Experiment extends App {
+      * Delta Experiment: Comparisons between different delta values
+      */
+     if (delta_exp) {
+-      filename = "data/" + task + "_" + db + "_end_to_end_delta.csv"
++      filename = outputDir + "/" + task + "_" + db + "_end_to_end_delta.csv"
+       writeReportTittle(filename)
+ 
+       val state: State = new State()
+@@ -299,11 +306,11 @@ object Experiment extends App {
+       val provenanceStates = List(ProvenanceState("dynamic", "fixed-aGM"), ProvenanceState("dynamic", "fixed-normalized"),
+         ProvenanceState("static", "fixed-normalized"), ProvenanceState("static", "fixed-normalized"), ProvenanceState("static", "fixed-normalized"))
+       val accuracyState = AccuracyState("increasing", 3000, increasingStep = 1)
+-      val analystCase = List(1, 9)
++      val analystCase = if (paperProfile) List(1, 4) else List(1, 9)
+ 
+       val overallBudgets = List(6.4)
+ //      val overallBudgets = List(0.4, 0.8, 1.6, 3.2, 6.4)
+-      val perQueryDeltas = List(1e-9, 1e-10, 1e-11, 1e-11, 1e-12, 1e-13)
++      val perQueryDeltas = if (paperProfile) List(1e-9, 1e-10, 1e-11, 1e-12, 1e-13) else List(1e-9, 1e-10, 1e-11, 1e-11, 1e-12, 1e-13)
+ 
+       for (curRun <- 1 to runs) {
+         overallBudgets foreach {
+@@ -312,7 +319,7 @@ object Experiment extends App {
+               delta =>
+               schedulers foreach {
+                 scheduler =>
+-                mechanisms zip provenanceStates foreach {
++                mechanisms.zip(provenanceStates).filterNot { case (m, _) => paperProfile && m == "Brownian" } foreach {
+                   tuple =>
+                       setupState(state, db, table, randomnessSeed, curRun, budget, analystCase, task,
+                         workloadSize, accuracyState, tuple._2, scheduler, replacement, tuple._1, null, filename, perQueryDelta=delta)
+@@ -335,11 +342,11 @@ object Experiment extends App {
+     /**
+      * End-to-end Evaluation for BFS tasks.
+      */
+-    filename = "data/" + task + "_" + db + "_end_to_end.csv"
++    filename = outputDir + "/" + task + "_" + db + "_end_to_end.csv"
+     writeReportTittle(filename)
+ 
+     val privileges = List(1, 4) // two data analysts: low high
+-    val runs: Int = 4 // each experiment is run 4 times
++    val runs: Int = configuredRuns // default: four independent workload seeds
+ 
+     val accuracyState = AccuracyState("increasing", 25000, increasingStep = 100)
+     val provenanceStates = List(ProvenanceState("dynamic", "fixed-aGM"), 
+@@ -363,7 +370,7 @@ object Experiment extends App {
+       eqw_param =>
+       schedulers foreach {
+         scheduler =>
+-          mechanisms zip provenanceStates foreach {
++          mechanisms.zip(provenanceStates).filterNot { case (m, _) => paperProfile && m == "Brownian" } foreach {
+             tuple =>
+                 setupState(state, db, table, randomnessSeed, curRun, overallBudget, privileges, task, null.asInstanceOf[Int],
+                   accuracyState, tuple._2, scheduler, replacement, tuple._1, eqw_param, filename)
+@@ -435,7 +442,7 @@ object Experiment extends App {
+       state.setupAnalystWorkload(workloadType, workloadSize, accuracyState)
+     state.setMechanism(mechanism, accountant)
+     state.setScheduler(scheduler, replacement)
+-    state.setLogger("debug")
++    state.setLogger(scala.sys.env.getOrElse("DPROVDB_LOG_LEVEL", "debug"))
+ 
+     state
+   }
+diff --git a/src/main/scala/DProvDB/Utils/RandomBasis.scala b/src/main/scala/DProvDB/Utils/RandomBasis.scala
+new file mode 100644
+index 0000000..37e4151
+--- /dev/null
++++ b/src/main/scala/DProvDB/Utils/RandomBasis.scala
+@@ -0,0 +1,14 @@
++package edu.DProvDB.Utils
++
++import breeze.stats.distributions.{RandBasis, ThreadLocalRandomGenerator}
++import org.apache.commons.math3.random.RandomGenerator
++
++/** Avoid ephemeral ThreadLocal entries in the single-threaded reproduction. */
++object RandomBasis {
++  private val direct = scala.sys.env.get("DPROVDB_PROFILE").contains("paper")
++
++  def fromGenerator(generator: => RandomGenerator): RandBasis = {
++    if (direct) new RandBasis(generator)
++    else new RandBasis(new ThreadLocalRandomGenerator(generator))
++  }
++}

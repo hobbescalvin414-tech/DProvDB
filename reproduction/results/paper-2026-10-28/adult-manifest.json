@@ -1,0 +1,18 @@
+{
+  "source": "https://archive.ics.uci.edu/static/public/2/adult.zip",
+  "source_sha256": "7537312dd56c2b98035880805ce99e68183a30ee468aa5329d6df0fbb3cc21bb",
+  "counts": {
+    "adult.data": {
+      "raw": 32561,
+      "complete": 30162
+    },
+    "adult.test": {
+      "raw": 16281,
+      "complete": 15060
+    }
+  },
+  "combined_complete_rows": 45222,
+  "output_sha256": "f766afae7aba4b9bda18d3545ead1055acfe7d5da2aa3934120dfc4be94a92b5",
+  "paper_claimed_rows": 45224,
+  "note": "Standard UCI complete cases yield 45222, two fewer than the paper. Do not fabricate rows. Upstream data/adult.data remains unchanged."
+}

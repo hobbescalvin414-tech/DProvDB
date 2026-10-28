@@ -235,7 +235,7 @@ object WorkloadUtils {
   }
 
   private def GuassianDraw(mean: Int, variance: Int, seed: Long = 42): Double = {
-    Gaussian(mean, variance)(new RandBasis(new ThreadLocalRandomGenerator(new MersenneTwister(seed)))).draw()
+    Gaussian(mean, variance)(edu.DProvDB.Utils.RandomBasis.fromGenerator(new MersenneTwister(seed))).draw()
   }
 
   private def processAccuracy(accuracyState: AccuracyState, count: Int, randomSeed: Long): Double = {

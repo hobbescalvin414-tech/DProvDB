@@ -7,3 +7,7 @@ target/*
 .bsp/*
 
 .DS_Store
+
+# Local reproduction dependencies, database inputs and build logs
+.runtime/
+__pycache__/
