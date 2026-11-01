@@ -1,0 +1,82 @@
+{
+  "dataset": "shoppers",
+  "uci_id": 468,
+  "name": "Online Shoppers Purchasing Intention Dataset",
+  "repository_url": "https://archive.ics.uci.edu/dataset/468/online+shoppers+purchasing+intention+dataset",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=468",
+  "download_url": "https://archive.ics.uci.edu/static/public/468/data.csv",
+  "uci_last_updated": "Thu Jan 11 2024",
+  "prepared_utc": "2026-11-01T11:57:25.304789+00:00",
+  "raw_member": "data.csv",
+  "raw_rows": 12330,
+  "raw_columns": 18,
+  "processed_rows": 12330,
+  "missing_selected": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "raw_missing_counts": {},
+  "unit": "web session",
+  "sampling": "none; all records retained",
+  "transform": "z = 1000 * (x - observed_min) / (observed_max - observed_min); 12 significant digits; no integer rounding, imputation, clipping or row deletion",
+  "domain": "[0,1000] in all five fields; bounds derived from PUBLIC benchmark data, not a private DP bounds estimation",
+  "fields": [
+    {
+      "source": "ProductRelated",
+      "name": "productrelated",
+      "min": 0.0,
+      "max": 705.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "ProductRelated_Duration",
+      "name": "productrelated_duration",
+      "min": 0.0,
+      "max": 63973.52223,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "BounceRates",
+      "name": "bouncerates",
+      "min": 0.0,
+      "max": 0.2,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "ExitRates",
+      "name": "exitrates",
+      "min": 0.0,
+      "max": 0.2,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "PageValues",
+      "name": "pagevalues",
+      "min": 0.0,
+      "max": 361.7637419,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    }
+  ],
+  "files": {
+    "raw": {
+      "path": ".runtime/five-datasets/shoppers/original.csv",
+      "sha256": "b3055ee355f59134d851d32641183cb4a8b45def7124d2f50442a042f358e0d9"
+    },
+    "processed": {
+      "path": ".runtime/five-datasets/shoppers/processed.csv",
+      "sha256": "6e0d45a212c45688fe9203902b18483a398751825845148e312404d4054c7c57"
+    },
+    "metadata": {
+      "path": ".runtime/five-datasets/shoppers-metadata.json",
+      "sha256": "dbc735ebd1849fe44b43056dec8b39786eb3f7087a2fb4f92956122b0d5efcae"
+    }
+  }
+}

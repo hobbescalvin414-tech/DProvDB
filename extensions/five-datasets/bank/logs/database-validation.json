@@ -1,0 +1,16 @@
+{
+  "database": "bank",
+  "rows": 45211,
+  "columns": [
+    "age",
+    "balance",
+    "duration",
+    "campaign",
+    "previous"
+  ],
+  "all_column_domains": [
+    0,
+    1000
+  ],
+  "processed_sha256": "c7cd8c3acdfe73f8baa66a33ffec56fab0c4c1bc1a9a933a6c888d2039aa10cd"
+}

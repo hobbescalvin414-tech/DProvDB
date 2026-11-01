@@ -1,0 +1,82 @@
+{
+  "dataset": "credit",
+  "uci_id": 350,
+  "name": "Default of Credit Card Clients",
+  "repository_url": "https://archive.ics.uci.edu/dataset/350/default+of+credit+card+clients",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=350",
+  "download_url": "https://archive.ics.uci.edu/static/public/350/data.csv",
+  "uci_last_updated": "Fri Mar 29 2024",
+  "prepared_utc": "2026-11-01T11:57:25.098547+00:00",
+  "raw_member": "data.csv",
+  "raw_rows": 30000,
+  "raw_columns": 25,
+  "processed_rows": 30000,
+  "missing_selected": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "raw_missing_counts": {},
+  "unit": "client record",
+  "sampling": "none; all records retained",
+  "transform": "z = 1000 * (x - observed_min) / (observed_max - observed_min); 12 significant digits; no integer rounding, imputation, clipping or row deletion",
+  "domain": "[0,1000] in all five fields; bounds derived from PUBLIC benchmark data, not a private DP bounds estimation",
+  "fields": [
+    {
+      "source": "X5",
+      "name": "age",
+      "min": 21.0,
+      "max": 79.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "X1",
+      "name": "limit_bal",
+      "min": 10000.0,
+      "max": 1000000.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "X12",
+      "name": "bill_amt1",
+      "min": -165580.0,
+      "max": 964511.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "X18",
+      "name": "pay_amt1",
+      "min": 0.0,
+      "max": 873552.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "X19",
+      "name": "pay_amt2",
+      "min": 0.0,
+      "max": 1684259.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    }
+  ],
+  "files": {
+    "raw": {
+      "path": ".runtime/five-datasets/credit/original.csv",
+      "sha256": "45bcf4df62ff2e237a74eb155cabfb4bbbc171219a0637daef44fdad07503dd0"
+    },
+    "processed": {
+      "path": ".runtime/five-datasets/credit/processed.csv",
+      "sha256": "e3417f8df9d163c7e28788b6f294192050ca1e8455d181293a576fde8f17bc9c"
+    },
+    "metadata": {
+      "path": ".runtime/five-datasets/credit-metadata.json",
+      "sha256": "28bf0d8fe0a254cf65aead5a859b00e1668e4a8672612af43e4059cfdadc295c"
+    }
+  }
+}

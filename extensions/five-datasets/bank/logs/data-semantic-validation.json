@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "rows": 45211,
+  "target_field_not_used_in_queries": "y",
+  "target_counts": {
+    "no": 39922,
+    "yes": 5289
+  },
+  "unique_record_ids": null,
+  "raw_sha256": "d1513ec63b385506f7cfce9f2c5caa9fe99e7ba4e8c3fa264b3aaf0f849ed32d"
+}

@@ -1,0 +1,95 @@
+{
+  "dataset": "diabetes",
+  "uci_id": 296,
+  "name": "Diabetes 130-US Hospitals for Years 1999-2008",
+  "repository_url": "https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=296",
+  "download_url": "https://archive.ics.uci.edu/static/public/296/diabetes+130-us+hospitals+for+years+1999-2008.zip",
+  "uci_last_updated": "Tue Sep 24 2024",
+  "prepared_utc": "2026-11-01T12:02:50.835130+00:00",
+  "raw_member": "diabetic_data.csv",
+  "raw_rows": 101766,
+  "raw_columns": 50,
+  "processed_rows": 101766,
+  "missing_selected": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "raw_missing_counts": {
+    "weight": 98569,
+    "payer_code": 40256,
+    "diag_2": 358,
+    "diag_3": 1423,
+    "medical_specialty": 49949,
+    "race": 2273,
+    "diag_1": 21
+  },
+  "unit": "hospital encounter, NOT patient",
+  "sampling": "none; all records retained",
+  "transform": "z = 1000 * (x - observed_min) / (observed_max - observed_min); 12 significant digits; no integer rounding, imputation, clipping or row deletion",
+  "domain": "[0,1000] in all five fields; bounds derived from PUBLIC benchmark data, not a private DP bounds estimation",
+  "fields": [
+    {
+      "source": "time_in_hospital",
+      "name": "time_in_hospital",
+      "min": 1.0,
+      "max": 14.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "num_lab_procedures",
+      "name": "num_lab_procedures",
+      "min": 1.0,
+      "max": 132.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "num_medications",
+      "name": "num_medications",
+      "min": 1.0,
+      "max": 81.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "number_outpatient",
+      "name": "number_outpatient",
+      "min": 0.0,
+      "max": 42.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "number_inpatient",
+      "name": "number_inpatient",
+      "min": 0.0,
+      "max": 21.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    }
+  ],
+  "files": {
+    "raw": {
+      "path": ".runtime/five-datasets/diabetes/diabetic_data.csv",
+      "sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97"
+    },
+    "processed": {
+      "path": ".runtime/five-datasets/diabetes/processed.csv",
+      "sha256": "9904d0fe29ac4443bad7a2cbafff5f95c1260de8f8e108b2c7b257bb6f1ffba8"
+    },
+    "metadata": {
+      "path": ".runtime/five-datasets/diabetes-metadata.json",
+      "sha256": "4238fbc00bdb1802472f39e4057bb2a72d6e1b9a2341ce268582b36f0e1b8394"
+    },
+    "archive": {
+      "path": ".runtime/five-datasets/downloads/diabetes.zip",
+      "sha256": "f82ac129da2ddd2299391ff6fbae3a6a58b3edcf59ac9d7bd480c00fe453112a"
+    }
+  },
+  "distinct_patient_ids": 71518
+}

@@ -1,0 +1,16 @@
+{
+  "database": "shoppers",
+  "rows": 12330,
+  "columns": [
+    "productrelated",
+    "productrelated_duration",
+    "bouncerates",
+    "exitrates",
+    "pagevalues"
+  ],
+  "all_column_domains": [
+    0,
+    1000
+  ],
+  "processed_sha256": "6e0d45a212c45688fe9203902b18483a398751825845148e312404d4054c7c57"
+}

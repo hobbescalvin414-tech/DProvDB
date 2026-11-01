@@ -1,0 +1,100 @@
+{
+  "base_commit": "a9d051a7d2a75f3e60035ea28693be5c3b43b937",
+  "source_sha256": {
+    "src/main/scala/DProvDB/Mechanisms/AdditiveGM.scala": "3e1881afb13151bd5b5b5f51d64540c81d68efbb920364fc01234b3b1b15e79b",
+    "src/main/scala/DProvDB/Mechanisms/BaselineMechanism.scala": "3b985ee9a457c76b4ce2b241f1bbf0e1ef367f5352e3e5e70981479e83103669",
+    "src/main/scala/DProvDB/Mechanisms/BrownianMechanism.scala": "516ca4f6a4ed50ab6bad440ee76d0bc453864358cfb691158f4d2e22c79c29aa",
+    "src/main/scala/DProvDB/Mechanisms/Chorus.scala": "4a2fb6bd56c9eb0dfeb8c7af44d251766098fd9d8b608c4ca722b2536abc3bcd",
+    "src/main/scala/DProvDB/Mechanisms/ChorusWithProvenance.scala": "67e4cc06e70824a7462303ffd562a7586ba89444e87fc693bf7b92182ddec7c0",
+    "src/main/scala/DProvDB/Mechanisms/Mechanism.scala": "7d15dc14d45c3ab25ab61641616ff20062552d761da67c4741e97efeffc724b8",
+    "src/main/scala/DProvDB/Mechanisms/PrivateSQL.scala": "93c32351b1cb3760ba964895fb4c4faeafa3dd7e4d91c8e1693ee2bf0ef81764",
+    "src/main/scala/DProvDB/Model/Analyst.scala": "f6cf1837bd8490d68c98622112cde8536ff635fa708d5bbc0278d25f1b7c1ff1",
+    "src/main/scala/DProvDB/Model/Query.scala": "0885b44e295ef5c9b0ee12cbfdffb01cfd3ce887d15bbe5ded60210bcf53a3eb",
+    "src/main/scala/DProvDB/Model/QueryType.scala": "1b0f36c81be0461a25de14b8be2720c1b72a345b5ec3976f856f6eb34e0275c7",
+    "src/main/scala/DProvDB/Model/Synopsis.scala": "a9806d10eb41612ba745d2e2bc2d9e67f0a3a8d7d4b597d694954eeb4d5a3fe0",
+    "src/main/scala/DProvDB/Model/TransformedQuery.scala": "94cf8e422f0a6b471cc8222b6ecd10f7b8fa86f78b8ae33422775aa1525e7df4",
+    "src/main/scala/DProvDB/Model/View.scala": "12ed8442093250e931471587bf1d0ab51a9cb404a434341ef93e8d7a73f47a57",
+    "src/main/scala/DProvDB/Model/Workload.scala": "2a0b1ff16ae8f2fff764f25b2cdaf571dd9966a5b1feb10cf40629942ef0da54",
+    "src/main/scala/DProvDB/Provenance/ConstraintOptimizer.scala": "5708f54ddad1877f4e0a9fc91f47349746be0d867b62506eb084991df8dea3c6",
+    "src/main/scala/DProvDB/Provenance/ProvenanceTable.scala": "2f8d8ee368b2e7ba3dd2e3d687f70685f1ab42c48056f3995eb03fa717be712c",
+    "src/main/scala/DProvDB/Scheduler/Scheduler.scala": "6101bb2cfab3f1df4f63dae8d4967e8921c7653f443ca6a3a5239562ec617d1d",
+    "src/main/scala/DProvDB/State.scala": "d6355de043c60e77870cab2a0b25bdd17b3085fb2a055541d92fca9833c9b007",
+    "src/main/scala/DProvDB/System.scala": "4965ba8d02372c33a98e50e9c80d3947893e135a08806f6407d322c790df2b37",
+    "src/main/scala/DProvDB/Utils/AnalystUtils.scala": "c6e59c4a5fe468f8af200ff4749499217949746ead9c75e0c2433353061fe08a",
+    "src/main/scala/DProvDB/Utils/AnalyticGM.scala": "52a85cfb160c7dad7e26cffc79fc69c160fa7dc7d8739c2e1ec13e83c90f5d5a",
+    "src/main/scala/DProvDB/Utils/BrownianMotionUtil.scala": "627a6360faa6ab9850cc5fea0b66e34af78abc79cd25c7fd8243cddf91fab428",
+    "src/main/scala/DProvDB/Utils/DatasetUtils.scala": "cd7ec4c0b17e5c6be5e0eedd84d97befcf882f9d1f80b4d424ceb39241510e8a",
+    "src/main/scala/DProvDB/Utils/MetricUtils.scala": "d1c83c8f82a78e1bf6c7e39060b8e450a87105b640d301fc9b252d32d156b63f",
+    "src/main/scala/DProvDB/Utils/ProvenanceUtils.scala": "7094cc38bfb6c640efabaece31dce5898a2faba18a467db6c91852f41711a86c",
+    "src/main/scala/DProvDB/Utils/RandomBasis.scala": "cbb4d13f3c247c6788381695035d5530fceeecb0ea861ba7e4f594cd78c5d8fb",
+    "src/main/scala/DProvDB/Utils/ViewUtils.scala": "fc3ff426501e858782702e7b351cea9486a9a7a0e8763bcb727e9cb113fa8d02",
+    "src/main/scala/DProvDB/Utils/WorkloadUtils.scala": "8051f8230aa122dc5e1f0bba5d4a674c600f5bee972d58b9e79013f0ec31ccda",
+    "src/main/scala/DProvDB/ViewManager/ViewManager.scala": "fdf878317a66611dc45c744d92a4d0e9db9f0a2dc23a48df50191812308b7ba9",
+    "src/main/scala/Experiments/CLI.scala": "91587f0d1aaf947aa4cb98ee372c71d61e97b4cd4b8bb6afcadc7a602fc87501",
+    "src/main/scala/Experiments/Experiment.scala": "1ee71cf8b6e91bd7970cef11981dcb8fc6323c2fb356ad182fb02cd65237d5b4",
+    "src/main/scala/Experiments/FiveDatasets.scala": "9df6001abb281a23f198a1800f01993c748b631326cc8cd26dcfcc95cd4943ba",
+    "extensions/five-datasets/shared/schema.yaml": "d1416ccb1e40abb4c5cfac2077d9d1ba1a3a25fc336a809db96ff29bd848a3f1",
+    "extensions/five-datasets/shared/prepare_data.py": "e04a26c6aebcc3e40025597f963cfc0dab08bc3bed5093c51bbd269384edcd3c",
+    "extensions/five-datasets/shared/run_one.sh": "d61bd732559fa3fc8b937c57728ae4a9661cc7c77f5eb58007b668a4d918325b"
+  },
+  "profile": "paper",
+  "bins": 50,
+  "rrq": {
+    "methods": [
+      "aGM",
+      "baseline",
+      "PrivateSQL",
+      "Chorus",
+      "ChorusP"
+    ],
+    "budgets": [
+      0.4,
+      0.8,
+      1.6,
+      3.2,
+      6.4
+    ],
+    "schedulers": [
+      "round-robin",
+      "random"
+    ],
+    "queries_per_analyst": 4000,
+    "variance": "max(3000-index,1)"
+  },
+  "bfs": {
+    "methods": [
+      "aGM",
+      "baseline",
+      "Chorus",
+      "ChorusP"
+    ],
+    "budget": 200,
+    "branching": 5,
+    "granularity": 2,
+    "maximum_candidates_both_analysts": 312,
+    "threshold": "max(5,0.01*N)",
+    "variance": "25000 - 100*DFS_assignment_index (indices 1..156)"
+  },
+  "seeds": [
+    1025,
+    2050,
+    3075,
+    4100
+  ],
+  "noise_seed": "upstream unseeded; no bitwise reproducibility guarantee",
+  "privileges": [
+    1,
+    4
+  ],
+  "per_query_delta": 1e-09,
+  "total_delta": 1e-05,
+  "max_concurrent_processes": 2,
+  "memory_per_compute_container": "2 GiB",
+  "java_heap": "1200 MiB",
+  "preflight_adjustment": "Initial incomplete credit/shoppers runs were quarantined locally before final freeze: remove hardcoded public test DB password from new source; use dedicated-container runtime environment. No preliminary rows count toward formal results.",
+  "frozen_utc": "2026-11-01T12:04:33Z",
+  "excluded_preliminary_rows": {
+    "credit": 171,
+    "shoppers": 173
+  }
+}

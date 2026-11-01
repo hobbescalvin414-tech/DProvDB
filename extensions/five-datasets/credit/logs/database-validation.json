@@ -1,0 +1,16 @@
+{
+  "database": "credit",
+  "rows": 30000,
+  "columns": [
+    "age",
+    "limit_bal",
+    "bill_amt1",
+    "pay_amt1",
+    "pay_amt2"
+  ],
+  "all_column_domains": [
+    0,
+    1000
+  ],
+  "processed_sha256": "e3417f8df9d163c7e28788b6f294192050ca1e8455d181293a576fde8f17bc9c"
+}

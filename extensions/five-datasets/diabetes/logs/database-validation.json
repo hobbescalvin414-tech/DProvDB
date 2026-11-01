@@ -1,0 +1,16 @@
+{
+  "database": "diabetes",
+  "rows": 101766,
+  "columns": [
+    "time_in_hospital",
+    "num_lab_procedures",
+    "num_medications",
+    "number_outpatient",
+    "number_inpatient"
+  ],
+  "all_column_domains": [
+    0,
+    1000
+  ],
+  "processed_sha256": "9904d0fe29ac4443bad7a2cbafff5f95c1260de8f8e108b2c7b257bb6f1ffba8"
+}

@@ -1,0 +1,19 @@
+{
+  "passed": true,
+  "total_records": 1080,
+  "source_hashes_unchanged": true,
+  "rrq_accounting_identical_to_first_dataset": {
+    "bank": true,
+    "credit": true,
+    "shoppers": true,
+    "diabetes": true,
+    "covertype": true
+  },
+  "datasets": [
+    "bank",
+    "credit",
+    "shoppers",
+    "diabetes",
+    "covertype"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "passed": true,
+  "rows": 101766,
+  "target_field_not_used_in_queries": "readmitted",
+  "target_counts": {
+    "NO": 54864,
+    ">30": 35545,
+    "<30": 11357
+  },
+  "unique_record_ids": 101766,
+  "raw_sha256": "0689e7ec031237dc63031b938805c48377748761a3b26acab621567afa24df97"
+}

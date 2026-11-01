@@ -1,0 +1,86 @@
+{
+  "dataset": "bank",
+  "uci_id": 222,
+  "name": "Bank Marketing",
+  "repository_url": "https://archive.ics.uci.edu/dataset/222/bank+marketing",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=222",
+  "download_url": "https://archive.ics.uci.edu/static/public/222/bank+marketing.zip",
+  "uci_last_updated": "Fri Aug 18 2023",
+  "prepared_utc": "2026-11-01T11:58:56.027956+00:00",
+  "raw_member": "bank-full.csv",
+  "raw_rows": 45211,
+  "raw_columns": 17,
+  "processed_rows": 45211,
+  "missing_selected": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "raw_missing_counts": {},
+  "unit": "bank marketing record",
+  "sampling": "none; all records retained",
+  "transform": "z = 1000 * (x - observed_min) / (observed_max - observed_min); 12 significant digits; no integer rounding, imputation, clipping or row deletion",
+  "domain": "[0,1000] in all five fields; bounds derived from PUBLIC benchmark data, not a private DP bounds estimation",
+  "fields": [
+    {
+      "source": "age",
+      "name": "age",
+      "min": 18.0,
+      "max": 95.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "balance",
+      "name": "balance",
+      "min": -8019.0,
+      "max": 102127.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "duration",
+      "name": "duration",
+      "min": 0.0,
+      "max": 4918.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "campaign",
+      "name": "campaign",
+      "min": 1.0,
+      "max": 63.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "previous",
+      "name": "previous",
+      "min": 0.0,
+      "max": 275.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    }
+  ],
+  "files": {
+    "raw": {
+      "path": ".runtime/five-datasets/bank/bank-full.csv",
+      "sha256": "d1513ec63b385506f7cfce9f2c5caa9fe99e7ba4e8c3fa264b3aaf0f849ed32d"
+    },
+    "processed": {
+      "path": ".runtime/five-datasets/bank/processed.csv",
+      "sha256": "c7cd8c3acdfe73f8baa66a33ffec56fab0c4c1bc1a9a933a6c888d2039aa10cd"
+    },
+    "metadata": {
+      "path": ".runtime/five-datasets/bank-metadata.json",
+      "sha256": "3a29e6fdff30e21f71dcc7ded36420e04c24f7040ce8d40179a4426a330e349b"
+    },
+    "archive": {
+      "path": ".runtime/five-datasets/downloads/bank.zip",
+      "sha256": "e0bf5f5de5b846e2f18e9d90606637267d46dfa260e0f17bb12e605db5efbeb4"
+    }
+  }
+}

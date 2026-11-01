@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "rows": 30000,
+  "target_field_not_used_in_queries": "Y",
+  "target_counts": {
+    "1": 6636,
+    "0": 23364
+  },
+  "unique_record_ids": 30000,
+  "raw_sha256": "45bcf4df62ff2e237a74eb155cabfb4bbbc171219a0637daef44fdad07503dd0"
+}

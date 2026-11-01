@@ -1,0 +1,132 @@
+---
+databases:
+- database: "bank"
+  dialect: "POSTGRESQL"
+  namespace: "public"
+  tables:
+    - table: "records"
+      columns:
+        - name: "age"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "balance"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "duration"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "campaign"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "previous"
+          type: "c"
+          lb: 0
+          ub: 1000
+- database: "credit"
+  dialect: "POSTGRESQL"
+  namespace: "public"
+  tables:
+    - table: "records"
+      columns:
+        - name: "age"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "limit_bal"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "bill_amt1"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "pay_amt1"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "pay_amt2"
+          type: "c"
+          lb: 0
+          ub: 1000
+- database: "shoppers"
+  dialect: "POSTGRESQL"
+  namespace: "public"
+  tables:
+    - table: "records"
+      columns:
+        - name: "productrelated"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "productrelated_duration"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "bouncerates"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "exitrates"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "pagevalues"
+          type: "c"
+          lb: 0
+          ub: 1000
+- database: "diabetes"
+  dialect: "POSTGRESQL"
+  namespace: "public"
+  tables:
+    - table: "records"
+      columns:
+        - name: "time_in_hospital"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "num_lab_procedures"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "num_medications"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "number_outpatient"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "number_inpatient"
+          type: "c"
+          lb: 0
+          ub: 1000
+- database: "covertype"
+  dialect: "POSTGRESQL"
+  namespace: "public"
+  tables:
+    - table: "records"
+      columns:
+        - name: "elevation"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "slope"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "horizontal_distance_to_hydrology"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "vertical_distance_to_hydrology"
+          type: "c"
+          lb: 0
+          ub: 1000
+        - name: "horizontal_distance_to_roadways"
+          type: "c"
+          lb: 0
+          ub: 1000

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "formal_records": 1080,
+  "reports": 5,
+  "figures": 20,
+  "all_report_links_resolve": true,
+  "compressed_logs_scanned": true,
+  "no_raw_datasets_or_runtime_files": true,
+  "source_hashes_verified_by": "shared/validation.json",
+  "git_identity": {
+    "login": "hobbescalvin414-tech",
+    "id": 267216810,
+    "email": "267216810+hobbescalvin414-tech@users.noreply.github.com"
+  },
+  "scope": "New FiveDatasets.scala and extensions/five-datasets only"
+}

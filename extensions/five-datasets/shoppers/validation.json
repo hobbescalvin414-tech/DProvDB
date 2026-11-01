@@ -1,0 +1,23 @@
+{
+  "passed": true,
+  "records": 216,
+  "rrq_records": 200,
+  "bfs_records": 16,
+  "repeats": 4,
+  "unique_configurations_without_repeat": 54,
+  "seeds": [
+    1025,
+    2050,
+    3075,
+    4100
+  ],
+  "zero_utility_records": 26,
+  "ndcfg_undefined_records": 26,
+  "histogram_rows": 250,
+  "data_rows": 12330,
+  "observed_global_epsilon_within_budget": true,
+  "agm_low_quota_exceedances": 31,
+  "note": "Implementation accounting consistency, not a differential privacy proof; individual quotas are NOT claimed to pass.",
+  "result_sha256": "a2c953403ec3c8a6ef4ec8f5933bd6f2c71d89e329ea3f6ad45c7dda9466267e",
+  "histogram_sha256": "099fe3d06034c1a1ed1b9c7b773936eb6bf72473ac221b49e99459296b187160"
+}

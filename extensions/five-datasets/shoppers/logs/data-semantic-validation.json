@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "rows": 12330,
+  "target_field_not_used_in_queries": "Revenue",
+  "target_counts": {
+    "FALSE": 10422,
+    "TRUE": 1908
+  },
+  "unique_record_ids": null,
+  "raw_sha256": "b3055ee355f59134d851d32641183cb4a8b45def7124d2f50442a042f358e0d9"
+}

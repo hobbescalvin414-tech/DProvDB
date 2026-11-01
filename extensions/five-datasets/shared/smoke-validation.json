@@ -1,0 +1,28 @@
+{
+  "bank": {
+    "rows": 14,
+    "result_sha256": "2a234e7f0830dcab692a3d3aa37fcfd3a420f95577c6783d82972e1f625efd1c"
+  },
+  "credit": {
+    "rows": 14,
+    "result_sha256": "e2cdd4c7950fc0d2d27c6133e0207ec26ed8bda145e82b324496b6e583f4e2ca"
+  },
+  "shoppers": {
+    "rows": 14,
+    "result_sha256": "712c81bbb9f208f1e7dab250d5f7c4456264406d46bbc3ce7f50b3f8155c65c4"
+  },
+  "diabetes": {
+    "rows": 14,
+    "result_sha256": "cbada086081d2b3f4942dacf81c25511c9d2a4d2cafc87f6840c878a54d3a3d8"
+  },
+  "rng": {
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "seeded_gaussian_comparisons": 2000
+  },
+  "covertype": {
+    "rows": 14,
+    "result_sha256": "10b14d4b4b59ef26fe09878eb407c38ebbe08c05b5b64147e894a9b3356c9c8c"
+  }
+}

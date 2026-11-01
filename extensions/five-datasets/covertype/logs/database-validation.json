@@ -1,0 +1,16 @@
+{
+  "database": "covertype",
+  "rows": 581012,
+  "columns": [
+    "elevation",
+    "slope",
+    "horizontal_distance_to_hydrology",
+    "vertical_distance_to_hydrology",
+    "horizontal_distance_to_roadways"
+  ],
+  "all_column_domains": [
+    0,
+    1000
+  ],
+  "processed_sha256": "3859cd45998ed20d41e59470a3e139817e6356686f50c6ab99138a605c6b60ea"
+}

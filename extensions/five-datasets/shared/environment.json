@@ -1,0 +1,32 @@
+{
+  "recorded_utc": "2026-11-01T12:05:55.803547+00:00",
+  "image": "dprovdb-repro:java11",
+  "image_id": "sha256:e284d2b862614fc7d56322d4a4c87e2a78d295dccda276f0ea7d8e4f9b59e5d6",
+  "java": "Eclipse Adoptium 11.0.32.1",
+  "scala": "2.12.2",
+  "sbt": "1.10.7",
+  "postgresql": "16.1",
+  "python": "3.10.12",
+  "numpy": "1.26.4",
+  "pandas": "2.2.3",
+  "matplotlib": "3.9.2",
+  "docker_memory_bytes": 8321232896,
+  "compute_cpu_limit": 2,
+  "compute_memory_gib": 2,
+  "max_parallel_experiments": 2,
+  "database_cpu_limit": 1,
+  "database_memory_gib": 1,
+  "java_heap_mib": 1200,
+  "initial_base_commit": "a9d051a7d2a75f3e60035ea28693be5c3b43b937",
+  "chorus_commit": "35b9c06a9d0bf00d0b1eef1231f0b5ea0b237f1c",
+  "chorus_jar_sha256": "0e282ec78d8ecc7dea4590eb5874c5305699159df95d4d72e58537af2c202660",
+  "compiled_extension_classes_sha256": {
+    "edu/Experiments/FiveDatasets.class": "3a7e1b8709ed70d4a81b95216507f7ab9c4c3df51aecc3e73503fc48f111c0f3",
+    "edu/Experiments/FiveDatasets$.class": "60803c1d0954d1578922fff9ad619bda94ede01ec9137cd7eb20b63888749b05",
+    "edu/Experiments/FiveDatasets$ExtensionState.class": "538af962f3752c5a6b96a3c23d8de61620deb41051bb50c63d98cc722f4bca3f"
+  },
+  "preserved_original_database_counts": {
+    "adult.adult": 45222,
+    "tpch.orders": 1500000
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "passed": true,
+  "rows": 581012,
+  "target_field_not_used_in_queries": "c54",
+  "target_counts": {
+    "5": 9493,
+    "2": 283301,
+    "1": 211840,
+    "7": 20510,
+    "3": 35754,
+    "6": 17367,
+    "4": 2747
+  },
+  "unique_record_ids": null,
+  "raw_sha256": "0a9371cef7c964b5475d6053cc3e0894a5aa6f65ad1ed3ecb01c45aa96217945"
+}

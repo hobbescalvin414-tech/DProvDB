@@ -1,0 +1,86 @@
+{
+  "dataset": "covertype",
+  "uci_id": 31,
+  "name": "Covertype",
+  "repository_url": "https://archive.ics.uci.edu/dataset/31/covertype",
+  "metadata_url": "https://archive.ics.uci.edu/api/dataset?id=31",
+  "download_url": "https://archive.ics.uci.edu/static/public/31/covertype.zip",
+  "uci_last_updated": "Sat Mar 16 2024",
+  "prepared_utc": "2026-11-01T12:12:00.449089+00:00",
+  "raw_member": "covtype.data.gz",
+  "raw_rows": 581012,
+  "raw_columns": 55,
+  "processed_rows": 581012,
+  "missing_selected": [
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "raw_missing_counts": {},
+  "unit": "30x30 metre forest cartographic cell, not personal data",
+  "sampling": "none; all records retained",
+  "transform": "z = 1000 * (x - observed_min) / (observed_max - observed_min); 12 significant digits; no integer rounding, imputation, clipping or row deletion",
+  "domain": "[0,1000] in all five fields; bounds derived from PUBLIC benchmark data, not a private DP bounds estimation",
+  "fields": [
+    {
+      "source": "c0",
+      "name": "elevation",
+      "min": 1859.0,
+      "max": 3858.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "c2",
+      "name": "slope",
+      "min": 0.0,
+      "max": 66.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "c3",
+      "name": "horizontal_distance_to_hydrology",
+      "min": 0.0,
+      "max": 1397.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "c4",
+      "name": "vertical_distance_to_hydrology",
+      "min": -173.0,
+      "max": 601.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    },
+    {
+      "source": "c5",
+      "name": "horizontal_distance_to_roadways",
+      "min": 0.0,
+      "max": 7117.0,
+      "scaled_min": 0,
+      "scaled_max": 1000
+    }
+  ],
+  "files": {
+    "raw": {
+      "path": ".runtime/five-datasets/covertype/covtype.data",
+      "sha256": "0a9371cef7c964b5475d6053cc3e0894a5aa6f65ad1ed3ecb01c45aa96217945"
+    },
+    "processed": {
+      "path": ".runtime/five-datasets/covertype/processed.csv",
+      "sha256": "3859cd45998ed20d41e59470a3e139817e6356686f50c6ab99138a605c6b60ea"
+    },
+    "metadata": {
+      "path": ".runtime/five-datasets/covertype-metadata.json",
+      "sha256": "385accec8431e0222d5a3741c939bbf02994f6053e56942ba64fd36c9fc3d425"
+    },
+    "archive": {
+      "path": ".runtime/five-datasets/downloads/covertype.zip",
+      "sha256": "89a975c2457cd48e824238ae43c5a3cb762e42c4b4078d9b44a4514055105f6d"
+    }
+  }
+}
